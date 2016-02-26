@@ -1,0 +1,2 @@
+class ProposalApiController < ApplicationController
+end

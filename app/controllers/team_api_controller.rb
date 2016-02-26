@@ -1,0 +1,2 @@
+class TeamApiController < ApplicationController
+end
