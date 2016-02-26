@@ -9,7 +9,13 @@ class ProposalsController < ApplicationController
 		proposal = Proposal.find_by(id: params[:id])
 		proposal.approval_status = true
 		proposal.save
-		redirect_to ('/project/new')
+		new_project = Project.new(
+			name: proposal.name, 
+			description: proposal.description, 
+			timeline: proposal.timeline_days,
+			proposal_id: proposal.id )
+		new_project.save
+		redirect_to ('/proposals')
 	end
 
 	def deny
@@ -23,7 +29,8 @@ class ProposalsController < ApplicationController
 	def reset
 		proposal = Proposal.find_by(id: params[:id])
 		proposal.approval_status = nil
-		proposal.save		
+		proposal.save
+		Project.destroy_all(proposal_id: proposal.id)
 		redirect_to ('/proposals')
 	end
 
