@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TechForMiami</title>
+  <title>TechBuildsMiami</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -9,18 +9,46 @@
 </head>
 <body>
 <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Tech for Miami</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Tech Builds Miami</a>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#">About</a></li>
-        <li><a href="#">Log in</a></li>
         <li><a href="#">Partners</a></li>
+        <% if user_signed_in? %>
+              <li>
+              <%= link_to('Edit profile', edit_user_registration_path) %>
+              </li>
+            
+        <% end %>
+          <% if user_signed_in? %>
+              <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+              </li>
+            <% else %>
+              <li>
+              <%= link_to('Login', new_user_session_path)  %>  
+              </li>
+          <% end %>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-		<li><a href="#">About</a></li>
-        <li><a href="#">Log in</a></li>
+	     	<li><a href="#">About</a></li>
         <li><a href="#">Partners</a></li>     
+        <% if user_signed_in? %>
+              <li>
+              <%= link_to('Edit profile', edit_user_registration_path) %>
+              </li>
+            
+        <% end %>
+          <% if user_signed_in? %>
+              <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+              </li>
+            <% else %>
+              <li>
+              <%= link_to('Login', new_user_session_path)  %>  
+              </li>
+          <% end %>
       </ul>
     </div>
   </nav>

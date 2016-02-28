@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_scope :user do
+    get '/users/sign_up/:role' => 'devise/registrations#new'
+  end
+
+  devise_for :users, controllers: {registrations: "users/registrations"}
   resources :proposals
   resources :projects
   resources :teams

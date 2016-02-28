@@ -11,33 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226193556) do
+ActiveRecord::Schema.define(version: 20160228011413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "proposal_id"
     t.integer  "team_id"
     t.string   "name"
     t.text     "description"
     t.integer  "timeline"
+    t.text     "brief_description"
   end
 
   add_index "projects", ["proposal_id"], name: "index_projects_on_proposal_id", using: :btree
   add_index "projects", ["team_id"], name: "index_projects_on_team_id", using: :btree
 
   create_table "proposals", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "name"
     t.text     "description"
     t.integer  "timeline_days"
     t.string   "accepted_by"
     t.boolean  "approval_status"
+    t.text     "brief_description"
+    t.integer  "user_id"
   end
+
+  add_index "proposals", ["user_id"], name: "index_proposals_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -87,4 +92,5 @@ ActiveRecord::Schema.define(version: 20160226193556) do
 
   add_foreign_key "projects", "proposals"
   add_foreign_key "projects", "teams"
+  add_foreign_key "proposals", "users"
 end

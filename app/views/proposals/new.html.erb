@@ -1,0 +1,19 @@
+
+<div class="container">
+	
+	<%= form_for(@proposal) do |f| %>
+	    <%= f.label :name %>
+	    <%= f.text_field :name %>
+
+	    <%= f.label :brief_description %>
+	    <%= f.text_field :brief_description %>
+
+	    <%= f.label :description %>
+	    <%= f.text_field :description %>
+
+	    <%= f.label :timeline_days %>
+	    <%= f.number_field :timeline_days %>
+
+		<%= f.submit "Create Proposal" %>
+	<% end %>
+</div>

@@ -1,0 +1,12 @@
+<div class="container center">
+<div>
+	<h1>Your Proposals</h1>
+</div>	
+	<ul>
+		<% @user_proposals.each do |proposal| %>
+			<li>
+				<a href="<%= proposal.id %>"><%= proposal.name %></a>
+			</li>
+		<% end %>
+	</ul>
+</div>

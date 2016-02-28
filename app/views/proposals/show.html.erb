@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="center">
+    <h3> <%= @proposal.name %></h3>
+  </div>
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Brief Description</div>
+        <div class="collapsible-body"><p><%= @proposal.brief_description %> </p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">whatshot</i>Description</div>
+        <div class="collapsible-body"><p><%= @proposal.description %> </p></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">whatshot</i>Timeline in days</div>
+        <div class="collapsible-body"><p><%= @proposal.timeline_days %> </p></div>
+      </li>
+    </ul>
+</div>
