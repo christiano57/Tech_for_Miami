@@ -8,6 +8,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li>
+  <%= link_to('Edit profile', edit_user_registration_path) %>
+  </li>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  </li>
+  <% unless current_user == nil %>
+    <% if current_user.has_role?(:non_profit) %>
+      <li><%= link_to 'My Proposals', proposals_path %></li>
+      <li><%= link_to 'My Projects', projects_path %>
+    <% elsif current_user.has_role? :wizard %>
+      <li><a href="#">Item 1</a></li>
+    <% elsif current_user.has_role? :acolyte %>
+      <li><a href="#">Item 1</a></li>      
+    <% end %>
+  <% end %>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+  <li>
+  <%= link_to('Edit profile', edit_user_registration_path) %>
+  </li>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  </li>
+  <% unless current_user == nil %>
+  <% if current_user.has_role?(:non_profit) %>
+  <li><a href="/proposals">My Proposals</a></li>
+  <li><a href="/projects">My Projects</a></li>
+  <% end %>
+  <% end %>
+</ul>
 <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Tech Builds Miami</a>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -15,15 +50,8 @@
         <li><a href="#">About</a></li>
         <li><a href="#">Partners</a></li>
         <% if user_signed_in? %>
-              <li>
-              <%= link_to('Edit profile', edit_user_registration_path) %>
-              </li>
-            
-        <% end %>
-          <% if user_signed_in? %>
-              <li>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-              </li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Get Started<i class="material-icons right">arrow_drop_down</i></a></li>
+
             <% else %>
               <li>
               <%= link_to('Login', new_user_session_path)  %>  
@@ -35,15 +63,8 @@
 	     	<li><a href="#">About</a></li>
         <li><a href="#">Partners</a></li>     
         <% if user_signed_in? %>
-              <li>
-              <%= link_to('Edit profile', edit_user_registration_path) %>
-              </li>
-            
-        <% end %>
-          <% if user_signed_in? %>
-              <li>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-              </li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Get Started<i class="material-icons right">arrow_drop_down</i></a></li>
+
             <% else %>
               <li>
               <%= link_to('Login', new_user_session_path)  %>  
@@ -55,12 +76,12 @@
 
 <%= yield %>
 
-<footer class="page-footer orange">
+<footer class="page-footer blue lighten-2">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+          <h5 class="white-text">Tagline</h5>
+          <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, has menandri maluisset cu, ne ceteros consequat eum. Vel eu nullam inciderint.</p>
 
 
         </div>
@@ -69,24 +90,13 @@
           <ul>
             <li><a class="white-text" href="#!">Link 1</a></li>
             <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
           </ul>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="blue-text text-darke" href="/">Tech For Miami</a>
       </div>
     </div>
   </footer>

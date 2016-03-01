@@ -1,12 +1,43 @@
 <div class="container center">
 <div>
-	<h1>Your Proposals</h1>
+	<h4>Proposals awaiting approval</h4>
 </div>	
 	<ul>
 		<% @user_proposals.each do |proposal| %>
-			<li>
-				<a href="<%= proposal.id %>"><%= proposal.name %></a>
-			</li>
+			<% if proposal.approval_status == nil %>	
+				<li>
+					<a href="<%= proposal.id %>"><%= proposal.name %></a>
+				</li>
+			<% end %>	
 		<% end %>
 	</ul>
+
+<div>
+<br>
+	<h4>Approved Proposals</h4>
+</div>	
+	<ul>
+		<% @user_proposals.each do |proposal| %>
+			<% if proposal.approval_status == true %>	
+				<li>
+					<a href="<%= proposal.id %>"><%= proposal.name %></a>
+				</li>
+			<% end %>	
+		<% end %>
+	</ul>
+
+<div>
+<br>
+	<h4>Denied Proposals</h4>
+</div>	
+	<ul>
+		<% @user_proposals.each do |proposal| %>
+			<% if proposal.approval_status == false %>	
+				<li>
+					<a href="<%= proposal.id %>"><%= proposal.name %></a>
+				</li>
+			<% end %>	
+		<% end %>
+	</ul>
+
 </div>

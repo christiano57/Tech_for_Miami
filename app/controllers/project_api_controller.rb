@@ -1,2 +1,0 @@
-class ProjectApiController < ApplicationController
-end

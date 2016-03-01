@@ -1,14 +1,14 @@
 <h4>Proposals Pending Approval</h4>
 
 <ul class="collection">
-<% @pending_proposals.each do |proposal| %>
-	<li class="collection-item">
-		<a href="#"><%= proposal.name %></a>  
-		<a href="/proposals/<%= proposal.id %>/approve" class="waves-effect waves-light btn green">Approve</a>
-		<a href="/proposals/<%= proposal.id %>/deny" class="waves-effect waves-light btn red">Deny</a>
-	</li>
-	<br>
-<% end %>
+	<% @pending_proposals.each do |proposal| %>
+			<li class="collection-item">
+				<a href="#"><%= proposal.name %></a>  
+				<a href="/proposals/<%= proposal.id %>/approve" class="waves-effect waves-light btn green">Approve</a>
+				<a href="/proposals/<%= proposal.id %>/deny" class="waves-effect waves-light btn red">Deny</a>
+			</li>
+			<br>
+	<% end %>
 </ul>
 <br>
 <h4>Approved proposals</h4>
