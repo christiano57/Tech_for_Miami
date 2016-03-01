@@ -6,7 +6,7 @@
 		<% @user_proposals.each do |proposal| %>
 			<% if proposal.approval_status == nil %>	
 				<li>
-					<a href="<%= proposal.id %>"><%= proposal.name %></a>
+					<a href="proposals/<%= proposal.id %>"><%= proposal.name %></a>
 				</li>
 			<% end %>	
 		<% end %>
@@ -20,7 +20,7 @@
 		<% @user_proposals.each do |proposal| %>
 			<% if proposal.approval_status == true %>	
 				<li>
-					<a href="<%= proposal.id %>"><%= proposal.name %></a>
+					<a href="proposals/<%= proposal.id %>"><%= proposal.name %></a>
 				</li>
 			<% end %>	
 		<% end %>
@@ -34,7 +34,7 @@
 		<% @user_proposals.each do |proposal| %>
 			<% if proposal.approval_status == false %>	
 				<li>
-					<a href="<%= proposal.id %>"><%= proposal.name %></a>
+					<a href="proposals/<%= proposal.id %>"><%= proposal.name %></a>
 				</li>
 			<% end %>	
 		<% end %>

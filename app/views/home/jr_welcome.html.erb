@@ -1,3 +1,16 @@
 <div class="container">
-	<h1>Jr. Dev Welcome</h1>
+	<div class="center">
+		<h1>Jr. Dev Welcome</h1>
+			<% if current_user.team_id == nil%>
+				<p>Thank you for registrering. Please check back here to see if you've been picked up for a project.</p>
+			<% else %>
+				<h4>Here is your project and a list of your team mates</h4>
+					<h6>Project name here</h6>
+					<ul>
+						<li>
+							show team mates
+						</li>
+					</ul>
+			<% end %>
+	</div>
 </div>

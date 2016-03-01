@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="center">
+		<h1>Project Index Page</h1>
+	</div>
+	<ul>
+		<% unless @projects == nil %>
+		<% @projects.each do |project|%>
+			<li>
+				<a href="projects/<%= project.id %>"><%= project.name %></a>
+			</li>
+		<% end %>	
+		<% end %>
+	</ul>
+</div>

@@ -20,11 +20,7 @@
   <% unless current_user == nil %>
     <% if current_user.has_role?(:non_profit) %>
       <li><%= link_to 'My Proposals', proposals_path %></li>
-      <li><%= link_to 'My Projects', projects_path %>
-    <% elsif current_user.has_role? :wizard %>
-      <li><a href="#">Item 1</a></li>
-    <% elsif current_user.has_role? :acolyte %>
-      <li><a href="#">Item 1</a></li>      
+      <li><%= link_to 'My Projects', projects_path %>  
     <% end %>
   <% end %>
 </ul>

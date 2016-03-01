@@ -39,6 +39,7 @@ class ProposalsController < ApplicationController
 		proposal.save
 		new_project = Project.new(
 			name: proposal.name, 
+			brief_description: proposal.brief_description,
 			description: proposal.description, 
 			timeline: proposal.timeline_days,
 			proposal_id: proposal.id )

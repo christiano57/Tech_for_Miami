@@ -1,19 +1,19 @@
 <div class="container">
   <div class="center">
-    <h3> <%= @proposal.name %></h3>
+    <h3> <%= @project.name %></h3>
   </div>
     <ul class="collapsible popout" data-collapsible="expandable">
       <li>
         <div class="collapsible-header active"><i class="material-icons">star</i>Brief Description</div>
-        <div class="collapsible-body"><p><%= @proposal.brief_description %> </p></div>
+        <div class="collapsible-body"><p><%= @project.brief_description %> </p></div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">star</i>Description</div>
-        <div class="collapsible-body"><p><%= @proposal.description %> </p></div>
+        <div class="collapsible-body"><p><%= @project.description %> </p></div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">star</i>Timeline in days</div>
-        <div class="collapsible-body"><p><%= @proposal.timeline_days %> </p></div>
+        <div class="collapsible-body"><p><%= @project.timeline %> </p></div>
       </li>
     </ul>
 </div>
