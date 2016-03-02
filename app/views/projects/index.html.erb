@@ -2,13 +2,26 @@
 	<div class="center">
 		<h1>Project Index Page</h1>
 	</div>
-	<ul>
-		<% unless @projects == nil %>
+	<table>
+        <thead>
+          <tr>
+              <th data-field="name">Name</th>
+              <th data-field="timeline">Timeline</th>
+              <th data-field="accept">Accept?</th>
+          </tr>
+        </thead>
+
+        <tbody>
+       	<% unless @projects == nil %>
 		<% @projects.each do |project|%>
-			<li>
-				<a href="projects/<%= project.id %>"><%= project.name %></a>
-			</li>
-		<% end %>	
-		<% end %>
-	</ul>
+
+          <tr>
+			<td><a href="projects/<%= project.id %>"><%= project.name %></a></td>            
+			<td><%= project.timeline %> days</td>
+            <td><a href="/" data-project-id="<%= project.id %>" class="waves-effect waves-light btn<%if current_user.has_role? :admin %> disabled <% end %>">Accept</a></td>
+          </tr>
+        <% end %>
+        <% end %>
+        </tbody>
+      </table>
 </div>

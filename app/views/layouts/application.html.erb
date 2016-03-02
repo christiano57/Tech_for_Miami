@@ -7,7 +7,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="grey lighten-3">
 
 <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
@@ -39,6 +39,7 @@
   <% end %>
   <% end %>
 </ul>
+<header class="header">
 <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Tech Builds Miami</a>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -69,9 +70,10 @@
       </ul>
     </div>
   </nav>
-
+</header>  
+<main>
 <%= yield %>
-
+</main>
 <footer class="page-footer blue lighten-2">
     <div class="container">
       <div class="row">

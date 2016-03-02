@@ -2,3 +2,22 @@
 
 // @import "materialize/components/color";
 // $primary-color: color("black", "lighten-2") !default;
+
+
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+	background-image: url(/assets/MiamiSkylineWhite.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 60%;
+  }
+
+.header {    
+ 	}
+main {
+    flex: 1 0 auto;
+  }
+
