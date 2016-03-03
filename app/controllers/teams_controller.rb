@@ -1,14 +1,8 @@
 class TeamsController < ApplicationController
 	before_action :authenticate_user!
 	def new
-		@acolytes = []
-		users = User.all
-		users.each do |user|
-			if user.has_role?(:acolyte)
-				@acolytes.push(user)
-			end
-		end
-		puts @acolytes
+		@team = Team.find_by(team_lead_id: current_user.id)
+		@acolytes = @team.generate_team_member_list(current_user)
 	end
 
 	def create
@@ -43,6 +37,19 @@ class TeamsController < ApplicationController
 		else
 			@jrdev.team_id = nil
 			@jrdev.save
+		end
+		@project = Project.find_by(team_id: @team.id)
+		@proposal = Proposal.find_by(id: @project.proposal_id)
+		@non_profit = User.find_by(id: @proposal.user_id)
+		@non_profit.team_id = current_user.team_id
+		@non_profit.save
+		@built_team = User.where(team_id: current_user.team_id)
+		if @built_team.length > 2
+			@team.built = true
+			@team.save
+		elsif @built_team.length <= 2
+			@team.built = false
+			@team.save
 		end
 		render json: @jrdev
 	end

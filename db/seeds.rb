@@ -6,40 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Proposal.create(
-	name: "Building.co Rooftop garden", 
-	description: "we want to create a site to promote our project where people can sign up to volunteer",
-	timeline_days: 14,
-	accepted_by: "christian",
-	approval_status: nil
-)
+admin = User.create(email: "admin@admin.com", password: "password", password_confirmation: "password")
 
-Proposal.create(
-	name: "poorly worded project", 
-	description: "we want to create a site to promote our project where people can sign up to volunteer",
-	timeline_days: 14,
-	accepted_by: "christian",
-	approval_status: false
-)
+admin.add_role :admin
 
-Proposal.create(
-	name: "Well written project", 
-	description: "we want to create a site to promote our project where people can sign up to volunteer",
-	timeline_days: 14,
-	accepted_by: "christian",
-	approval_status: true
-)
-Proposal.create(
-	name: "another crappy project", 
-	description: "we want to create a site to promote our project where people can sign up to volunteer",
-	timeline_days: 14,
-	accepted_by: "christian",
-	approval_status: false
-)
-Proposal.create(
-	name: "this could be anything", 
-	description: "we want to create a site to promote our project where people can sign up to volunteer",
-	timeline_days: 14,
-	accepted_by: "christian",
-	approval_status: nil
-)
+non_profit = User.create(name: "christian", email: "admin@admin.com", password: "password", password_confirmation: "password", organization: "south florida drone user group")
+
+non_profit.add_role :non_profit
+
+wizards = [
+		User.create(name: , email: , password: , password_confirmation: linkedin: , github: )
+	]
+
+wizards.each do |wizard|
+	wizard.add_role :wizard
+end
+
+acolytes = [
+		User.create(name: , email: , password: , password_confirmation: linkedin: , github: )
+	]
+
+acolytes.each do |acolyte|
+	acolyte.add_role :acolyte
+end
