@@ -12,8 +12,14 @@
 //
 //= require jquery
 //= require materialize-sprockets
-//= require app
 //= require jquery_ujs
 //= require_tree .
 
 
+$( document ).ready(function(){
+	$(".button-collapse").sideNav();
+	createTeam();
+	addTeamMember()
+	removeTeamMember()
+	// $(".dropdown-button").dropdown();
+});

@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id])
 		@team = Team.find_by(team_lead_id: current_user.id)
-		
+		@team_members = User.where(team_id: @team.id)
 	end
 end
 

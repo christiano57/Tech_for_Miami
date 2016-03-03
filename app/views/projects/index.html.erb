@@ -18,8 +18,10 @@
 
           <tr>
 			<td><a href="projects/<%= project.id %>"><%= project.name %></a></td>            
-			<td><%= project.timeline %> days</td>
-      <td><a href="#" data-user-id="<%= current_user.id %>" data-project-id="<%= project.id %>" class="waves-effect waves-light btn js-create-team-btn<% unless current_user.has_role? :wizard %> disabled <% end %> <% if current_user.team_id == nil%> disabled<% end %> ">Accept</a></td>
+      <td><%= project.timeline %> days</td>
+      <% if current_user.has_role? :wizard %>
+      <td><a href="#" data-user-id="<%= current_user.id %>" data-project-id="<%= project.id %>" class="waves-effect waves-light btn js-create-team-btn">Accept</a></td>
+      <% end %>
           </tr>
         <% end %>
         <% end %>

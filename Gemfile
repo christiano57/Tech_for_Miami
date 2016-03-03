@@ -26,10 +26,6 @@ gem 'devise'
 
 gem 'rolify'
 
-gem 'sprockets', '>= 3.0.0'
-
-gem 'sprockets-es6', require: 'sprockets/es6'
-
 gem 'rails_12factor', group: :production
 
 gem 'materialize-sass'
