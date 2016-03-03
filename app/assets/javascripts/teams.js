@@ -33,8 +33,8 @@ function addTeamMember() {
 		var selector = $(event.currentTarget).data('user-id')
 		var teamId = $('.js-team-id').data('team-id')
 		console.log(selector);
-		$(`.js-add-team-btn-${selector}`).addClass("disabled");
-		$(`.js-remove-team-btn-${selector}`).removeClass("disabled");
+		$('.js-add-team-btn-'+ selector).addClass("disabled");
+		$('.js-remove-team-btn-' + selector).removeClass("disabled");
 		var userId = selector;	
 		$.ajax({
 		    url: "/teams/" + teamId,
@@ -56,8 +56,8 @@ function removeTeamMember() {
 		var selector = $(event.currentTarget).data('user-id')
 		var teamId = $('.js-team-id').data('team-id')
 		console.log(selector);
-		$(`.js-remove-team-btn-${selector}`).addClass("disabled");
-		$(`.js-add-team-btn-${selector}`).removeClass("disabled");
+		$('.js-remove-team-btn-' + selector).addClass("disabled");
+		$('.js-add-team-btn-' + selector).removeClass("disabled");
 		var userId = selector;
 		$.ajax({
 		    url: "/teams/" + teamId,
