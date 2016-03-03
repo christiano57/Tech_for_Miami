@@ -1,1 +1,33 @@
-<h1>Team Form</h1>
+<div class="center">
+	<h1>Team Form</h1>
+</div>
+	
+<div class="container">
+	<table>
+        <thead>
+          <tr>
+              <th data-field="name">Name</th>
+              <th data-field="github">Github</th>
+              <th data-field="linkedin">Linkedin</th>
+              <th data-field="accept">Accept?</th>
+              <th data-field="undo">Undo</th>
+          </tr>
+        </thead>
+
+        <tbody>
+       	<% unless @acolytes == nil %>
+		<% @acolytes.each do |acolyte|%>
+
+          <tr>
+			<td><%= acolyte.name %></td>
+			<td><%= acolyte.linkedin %></td>
+			<td><%= acolyte.github %></td>
+      		<td><a href="#" data-user-id="<%= acolyte.id %>" class="waves-effect waves-light btn js-add-team-btn-<%= acolyte.id %><% unless current_user.has_role? :wizard %> disabled<% end %> ">Accept</a></td>
+      		<td><a href="#" data-user-id="<%= acolyte.id %>" class="waves-effect waves-light btn js-remove-team-btn-<%= acolyte.id %> disabled">Undo</a></td>
+
+          </tr>
+        <% end %>
+        <% end %>
+        </tbody>
+      </table>
+</div>

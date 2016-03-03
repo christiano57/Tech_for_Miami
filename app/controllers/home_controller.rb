@@ -9,7 +9,11 @@ class HomeController < ApplicationController
 	end
 
 	def welcome
-		if current_user.has_role?(:non_profit)
+		if current_user.has_role? :admin
+			render 'welcome'
+		elsif current_user.name == nil
+			redirect_to :controller => 'users/registrations', :action => 'edit'
+		elsif current_user.has_role?(:non_profit)
 			render 'non_profit_welcome'
 		elsif current_user.has_role?(:wizard)
 			if current_user.team_id != nil
@@ -18,10 +22,6 @@ class HomeController < ApplicationController
 			render 'sr_welcome'
 		elsif current_user.has_role?(:acolyte)
 			render 'jr_welcome'
-		elsif current_user.has_role?(:admin)
-			render 'welcome'
-		else
-			render 'index', status: 401
 		end
 	end
 end

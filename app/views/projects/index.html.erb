@@ -2,6 +2,7 @@
 	<div class="center">
 		<h1>Project Index Page</h1>
 	</div>
+  <div class="center">
 	<table>
         <thead>
           <tr>
@@ -18,10 +19,11 @@
           <tr>
 			<td><a href="projects/<%= project.id %>"><%= project.name %></a></td>            
 			<td><%= project.timeline %> days</td>
-            <td><a href="/" data-project-id="<%= project.id %>" class="waves-effect waves-light btn<%if current_user.has_role? :admin %> disabled <% end %>">Accept</a></td>
+      <td><a href="#" data-user-id="<%= current_user.id %>" data-project-id="<%= project.id %>" class="waves-effect waves-light btn js-create-team-btn<% unless current_user.has_role? :wizard %> disabled <% end %> <% if current_user.team_id == nil%> disabled<% end %> ">Accept</a></td>
           </tr>
         <% end %>
         <% end %>
         </tbody>
       </table>
+</div>
 </div>

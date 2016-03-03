@@ -16,4 +16,16 @@
         <div class="collapsible-body"><p><%= @project.timeline %> </p></div>
       </li>
     </ul>
+    <% if @team.built == true%>
+    <div class="center">
+      <h2>Show Team Members</h2>
+    </div>
+    <div class="center">
+      <a href="teams/<% current_user.team_id %>" class="btn">Complete project?</a>
+    </div>
+    <% else %>
+    <div class="center">
+      <%= link_to "Build Team", {controller: "teams", action: "new"}, class: "btn" %>
+    </div>
+    <% end %>
 </div>
