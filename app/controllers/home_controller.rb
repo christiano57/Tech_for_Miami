@@ -21,6 +21,9 @@ class HomeController < ApplicationController
 			end
 			render 'sr_welcome'
 		elsif current_user.has_role?(:acolyte)
+			if current_user.team_id != nil
+				@project = Project.find_by(team_id: current_user.team_id )
+			end
 			render 'jr_welcome'
 		end
 	end

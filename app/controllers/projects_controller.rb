@@ -13,8 +13,14 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		@team = Team.find_by(team_lead_id: current_user.id)
-		@team_members = User.where(team_id: @team.id)
+		if current_user.has_role? :wizard
+			@team = Team.find_by(team_lead_id: current_user.id)
+		elsif current_user.has_role? :acolyte
+			@team = Team.find_by(id: current_user.team_id)
+		end
+		if @team != nil
+			@team_members = User.where(team_id: @team.id)
+		end
 	end
 end
 

@@ -16,48 +16,52 @@
         <div class="collapsible-body"><p><%= @project.timeline %> </p></div>
       </li>
     </ul>
-    <% if @team.id == current_user.team_id %>
-    <div class="center">
-      <h2>Show Team Members</h2>
-    </div>
-    <div class="center">
-    <table>
-        <thead>
-          <tr>
-              <th data-field="id">Name</th>
-              <th data-field="email">Email</th>
-              <th data-field="role">Role</th>
-          </tr>
-        </thead>
+    <% unless @team == nil %>
+      <% if @team.id == current_user.team_id %>
+        <div class="center">
+          <h2>Show Team Members</h2>
+        </div>
+        <div class="center">
+        <table>
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="email">Email</th>
+                  <th data-field="role">Role</th>
+              </tr>
+            </thead>
 
-        <tbody>
-        <% unless @team_members == nil %>
-          <% @team_members.each do |member|%>
-            <tr>
-              <td><%= member.name %></td>
-              <td><a href="<%= member.email %>"><%= member.email %></a></td>
-              <td>
-                <% if member.has_role? :wizard %>
-                  Sr. Dev
-                <% elsif member.has_role? :acolyte%>
-                  Jr. Dev
-                <% elsif member.has_role? :non_profit %>
-                  Rep. for <%= member.organization %>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+            <tbody>
+            <% unless @team_members == nil %>
+              <% @team_members.each do |member|%>
+                <tr>
+                  <td><%= member.name %></td>
+                  <td><a href="<%= member.email %>"><%= member.email %></a></td>
+                  <td>
+                    <% if member.has_role? :wizard %>
+                      Sr. Dev
+                    <% elsif member.has_role? :acolyte%>
+                      Jr. Dev
+                    <% elsif member.has_role? :non_profit %>
+                      Rep. for <%= member.organization %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        <% if @team.built != true %>
+        <div class="center">
+          <%= link_to "Build Team", {controller: "teams", action: "new"}, class: "btn" %>
+        </div>
+        <% else %>
+        <div class="center">
+          <a href="teams/<% current_user.team_id %>" class="btn">Complete project?</a>
+        </div>
         <% end %>
-        </tbody>
-      </table>
-    <% if @team.built != true %>
-    <div class="center">
-      <%= link_to "Build Team", {controller: "teams", action: "new"}, class: "btn" %>
-    </div>
-    <% else %>
-    <div class="center">
-      <a href="teams/<% current_user.team_id %>" class="btn">Complete project?</a>
-    </div>
+      <% end %>
     <% end %>
-    <% end %>
+    <br>
+    <br>
 </div>

@@ -1,14 +1,11 @@
 <div class="container">
 	<div class="center">
-		<h1>Jr. Dev Welcome</h1>
+		<h1>Welcome Jr. Dev <%= current_user.name %>!</h1>
 			<% if current_user.team_id == nil%>
 				<p>Thank you for registrering. Please check back here to see if you've been picked up for a project.</p>
 			<% else %>
-				<h4>Here is your project and a list of your team mates</h4>
-					<h6>Project name here</h6>
-					<ul>
-						<li>list of team mates</li>
-					</ul>
+				<h2>Congratulations! You've been chose for a project</h2>
+				<a href="/projects/<%= @project.id %>" class="btn">Take me to my project.</a>
 			<% end %>
 	</div>
 </div>
