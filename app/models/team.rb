@@ -8,6 +8,9 @@ class Team < ActiveRecord::Base
 			team_lead_profile = Linkedin::Profile.get_profile(team_lead.linkedin)
 			list_of_devs = []
 			people.each do |person|
+				  puts "--------------************------"
+				  puts person.name
+				  puts person.linkedin
 				  profile = Linkedin::Profile.get_profile(person.linkedin)
 				  count = 0
 				  puts "Profile #{profile.first_name}"
@@ -16,7 +19,6 @@ class Team < ActiveRecord::Base
 				      count += 1
 				    end
 				  end
-
 				  list_of_devs << { count: count, profile: profile.first_name, user_id: person.id}
 				end
 
