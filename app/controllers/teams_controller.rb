@@ -54,6 +54,22 @@ class TeamsController < ApplicationController
 		render json: @jrdev
 	end
 
+	def destroy
+		@team = Team.find_by(id: params[:id])
+		@project = Project.find_by(team_id: @team.id)
+		@project.team_id = nil
+		@project.save
+		@team_members = User.where(team_id: @team.id)
+		@team_members.each do |member|
+			member.team_id = nil
+			member.save
+		end
+		@team.team_lead_id = nil
+		@team.save
+		@team.destroy
+		redirect_to root_path
+	end
+
 
 private
 	def team_params
